@@ -66,10 +66,6 @@ module.exports = function (grunt) {
           include: ['app'], // assumes a production build using almond
           name: "../node_modules/almond/almond",
           out: '../js/app.min.js',
-          wrap: {
-            start: '/*! p-test - code by @taseenb / v<%= pkg.version %> <%= grunt.template.today("mmmm dd, yyyy") %> */\n',
-            end: '/* thanks by @taseenb */'
-          },
           wrapShim: true,
           removeCombined: true,
           useStrict: true,

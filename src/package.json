@@ -7,7 +7,6 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-requirejs": "~0.4.4",
     "grunt-sass": "~0.18.1",
-    "amdclean": "~2.6.0",
     "almond": "~0.3.1"
   }
 }
