@@ -2,13 +2,12 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-//    jshint: {
-//      source: {
-//        options: {jshintrc: 'scripts/.jshintrc'},
-//        ignores: ["scripts/vendors/**"],
-//        src: ['scripts/**/*.js']
-//      }
-//    },
+    jshint: {
+      source: {
+        options: {jshintrc: 'scripts/.jshintrc'},
+        src: ['scripts/**/*.js', "!scripts/vendors/**", "!scripts/config.js"]
+      }
+    },
     watch: {
       scripts: {
         files: ['scripts/**/*.js'],
@@ -85,12 +84,12 @@ module.exports = function (grunt) {
 
   });
 
-//  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
 //  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-sass');
 
-  grunt.registerTask('default', [ 'requirejs', 'sass']);
+  grunt.registerTask('default', [ 'jshint', 'requirejs', 'sass']);
 
 };

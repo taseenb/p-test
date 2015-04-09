@@ -7,6 +7,6 @@ define([
 
 
   console.log('start app!!!');
-  console.log($, _, Backbone);
+  console.log($(), _, Backbone);
 
 });
