@@ -1,5 +1,15 @@
 $bg: #FFF;
 
+html,
 body {
-  background-color: $bg; //
+  position: relative;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: $bg;
+  height: 200%;
 }

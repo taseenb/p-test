@@ -15,8 +15,12 @@
   "unused": "vars",
   "browser": true,
   "globals": {
+    // Setting an entry to true enables reading and writing to that variable.
+    // Setting it to false will trigger JSHint to consider that variable read-only.
+    "App": false,
+    "Modernizr": false,
     "define": false,
     "require": false,
-    "$": true
+    "$": false
   }
 }
