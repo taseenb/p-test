@@ -11,7 +11,7 @@ define(function(require){
       this.$win = $(window);
       this.callback = _.debounce(this.onResize, 250).bind(this);
 
-      $(window).on('resize', this.callback);
+      this.$win.on('resize', this.callback);
     },
     onResize: function() {
       App.mediator.publish('resize', {
