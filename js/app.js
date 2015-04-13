@@ -1,4 +1,4 @@
-/*! p-test - code by @taseenb / v0.0.1 April 12, 2015 */
+/*! p-test - code by @taseenb / v0.0.1 April 13, 2015 */
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -4038,7 +4038,7 @@ define('views/mainView',['require','underscore','backbone','text!tpl/header.html
 
 });
 
-define('text!tpl/list.html',[],function () { return '<div id="list">\n\n    <% _.each(list, function(el, idx, list){ %>\n\n        <a href="#item/<%= idx %>"><%= el.title%></a><br>\n\n    <% }); %>\n\n</div>';});
+define('text!tpl/list.html',[],function () { return '<div id="list">\n\n    <% _.each(list, function(el, idx, list){ %>\n\n    <div class="item">\n        <a class="link-detail" href="#item/<%= idx %>"><img src="<%= el.media.m %>"></a>\n\n        <div class="details">\n            <a class="link-detail" href="#item/<%= idx %>"><%= el.title %></a>\n\n            <div class="metadata">\n                <a class="author" href="<%= el.author_id %>"><%= el.author %></a>\n                <span class="published">Published: <%= el.published %></span>\n                <a class="link-flickr" href="<%= el.link %>">View on Flickr</a>\n            </div>\n        </div>\n\n    </div>\n\n    <% }); %>\n\n</div>';});
 
 define('views/listView',['require','underscore','backbone','text!tpl/list.html'],function(require) {
 
@@ -4087,18 +4087,18 @@ define('views/listView',['require','underscore','backbone','text!tpl/list.html']
     },
 
     onScroll: function(e) {
-      console.log(e);
+//      console.log(e);
     },
 
     onResize: function(e) {
-      console.log(e);
+//      console.log(e);
     }
 
   });
 
 });
 
-define('text!tpl/detail.html',[],function () { return '<div class="inner">\n\n    <div class="detail-header">\n        <h1><%= title %></h1>\n\n        <a class="back" href="#">Back</a>\n\n        <div class="subtitle">\n            <span class="author">\n                <a href="<%= author_id %>"><%= author %></a>\n            </span>\n\n            <span class="published">\n                Published: <span class="published"><%= published %></span>\n            </span>\n        </div>\n    </div>\n\n    <div class="detail-content">\n        <div class="image-wrapper">\n            <img src="<%= media.m %>">\n        </div>\n\n        <div class="description"><%= description %></div>\n    </div>\n\n    <div class="detail-footer">\n        <div class="tags">\n            Tags:\n            <% _.each(tags.split(\' \'), function(el, idx) { %>\n                <a href="#<%= el %>"><%= el %></a>\n            <% }); %>\n        </div>\n    </div>\n\n</div>';});
+define('text!tpl/detail.html',[],function () { return '<div class="inner">\n\n    <div class="detail-header">\n        <h1><%= title %></h1>\n\n        <a class="back" href="#">Back</a>\n\n        <div class="subtitle">\n            <span class="author">\n                <a href="<%= author_id %>"><%= author %></a>\n            </span>\n\n            <span class="published">\n                Published: <span class="published"><%= published %></span>\n            </span>\n        </div>\n    </div>\n\n    <div class="detail-content">\n        <div class="image-wrapper">\n            <img src="<%= media.m %>">\n        </div>\n\n        <div class="description"><%= description %></div>\n    </div>\n\n    <div class="detail-footer">\n        <div class="tags">\n            Tags:\n            <% _.each(tags.split(\' \'), function(el, idx) { %>\n            <a href="#<%= el %>"><%= el %></a>\n            <% }); %>\n        </div>\n    </div>\n\n</div>';});
 
 define('views/detailView',['require','underscore','backbone','text!tpl/detail.html'],function(require) {
 
@@ -4140,11 +4140,11 @@ define('views/detailView',['require','underscore','backbone','text!tpl/detail.ht
     },
 
     onScroll: function(e) {
-      console.log(e);
+//      console.log(e);
     },
 
     onResize: function(e) {
-      console.log(e);
+//      console.log(e);
     }
 
   });

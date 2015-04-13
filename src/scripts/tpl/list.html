@@ -2,7 +2,20 @@
 
     <% _.each(list, function(el, idx, list){ %>
 
-        <a href="#item/<%= idx %>"><%= el.title%></a><br>
+    <div class="item">
+        <a class="link-detail" href="#item/<%= idx %>"><img src="<%= el.media.m %>"></a>
+
+        <div class="details">
+            <a class="link-detail" href="#item/<%= idx %>"><%= el.title %></a>
+
+            <div class="metadata">
+                <a class="author" href="<%= el.author_id %>"><%= el.author %></a>
+                <span class="published">Published: <%= el.published %></span>
+                <a class="link-flickr" href="<%= el.link %>">View on Flickr</a>
+            </div>
+        </div>
+
+    </div>
 
     <% }); %>
 

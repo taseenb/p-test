@@ -45,11 +45,11 @@ define(function(require) {
     },
 
     onScroll: function(e) {
-      console.log(e);
+//      console.log(e);
     },
 
     onResize: function(e) {
-      console.log(e);
+//      console.log(e);
     }
 
   });
