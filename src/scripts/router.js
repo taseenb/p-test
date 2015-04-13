@@ -1,28 +1,60 @@
-define(function(require) {
+define(function (require) {
 
   'use strict';
 
+//  var _ = require('underscore');
   var Backbone = require('backbone');
 
-  /**
-   * Create router.
-   */
+  // Views
+  var MainView = require('views/mainView');
+  var ListView = require('views/listView');
+  var DetailView = require('views/detailView');
+
   return Backbone.Router.extend({
-    initialize: function() {
+
+    routes: {
+      '': 'list',
+      'item/:idx': 'item'
+    },
+
+    initialize: function () {
       console.log('router initialized');
 
-      App.mediator.subscribe('scroll', this.onScroll.bind(this));
-      App.mediator.subscribe('resize', this.onResize.bind(this));
-
+      var mainView = new MainView();
+      mainView.render();
     },
 
-    onResize: function(e) {
-      console.log(e);
+    list: function () {
+      if (!App.listView) {
+        App.listView = new ListView(App.data.items);
+      }
+
+      if (App.detailView) {
+        App.detailView.hide();
+      }
+
+      App.listView.render().show();
     },
 
-    onScroll: function(e) {
-      console.log(e);
+    item: function (idx) {
+      var index = parseInt(idx);
+
+      if (index < 0 || index > App.data.items.length - 1) {
+        return;
+      } else {
+        var data = App.data.items[index];
+        if (!App.detailView) {
+          App.detailView = new DetailView();
+        }
+
+        if (App.listView) {
+          App.listView.hide();
+        }
+
+        App.detailView.render(data).show();
+      }
     }
+
   });
 
 });

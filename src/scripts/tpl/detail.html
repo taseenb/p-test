@@ -1,0 +1,36 @@
+<div class="inner">
+
+    <div class="detail-header">
+        <h1><%= title %></h1>
+
+        <a class="back" href="#">Back</a>
+
+        <div class="subtitle">
+            <span class="author">
+                <a href="<%= author_id %>"><%= author %></a>
+            </span>
+
+            <span class="published">
+                Published: <span class="published"><%= published %></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="detail-content">
+        <div class="image-wrapper">
+            <img src="<%= media.m %>">
+        </div>
+
+        <div class="description"><%= description %></div>
+    </div>
+
+    <div class="detail-footer">
+        <div class="tags">
+            Tags:
+            <% _.each(tags.split(' '), function(el, idx) { %>
+                <a href="#<%= el %>"><%= el %></a>
+            <% }); %>
+        </div>
+    </div>
+
+</div>
