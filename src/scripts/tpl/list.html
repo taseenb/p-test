@@ -1,22 +1,23 @@
-<div id="list">
+<% _.each(list, function(el, idx, list){ %>
 
-    <% _.each(list, function(el, idx, list){ %>
+<div class="clear"></div>
 
-    <div class="item">
-        <a class="link-detail" href="#item/<%= idx %>"><img src="<%= el.media.m %>"></a>
+<div class="item">
+    <a class="link-detail img" href="#item/<%= idx %>">
+        <span class="img-wrapper" style="background-image: url(<%= el.media.m %>);"></span>
+    </a>
 
-        <div class="details">
-            <a class="link-detail" href="#item/<%= idx %>"><%= el.title %></a>
+    <div class="details">
+        <a class="link-detail title" href="#item/<%= idx %>"><%= el.title %></a>
 
-            <div class="metadata">
-                <a class="author" href="https://www.flickr.com/people/<%= el.author_id %>"><%= el.author %></a>
-                <span class="published">Published: <%= el.published %></span>
-                <a class="link-flickr" href="<%= el.link %>">View on Flickr</a>
-            </div>
+        <div class="metadata">
+            <a class="author" href="https://www.flickr.com/people/<%= el.author_id %>"><%= el.author %></a>
+            <span class="published">Published: <%= el.published %></span>
+            <a class="link-flickr" href="<%= el.link %>">View on Flickr</a>
         </div>
-
     </div>
 
-    <% }); %>
-
 </div>
+
+
+<% }); %>

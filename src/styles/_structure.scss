@@ -1,0 +1,32 @@
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background-color: $bg;
+  overflow: hidden;
+}
+
+.clear {
+  clear: both;
+}
+
+#main {
+
+  @include large {
+    width: 780px;
+  }
+
+  @include small {
+    width: 90%;
+    margin: 0 5%;
+  }
+
+  margin: 0 auto;
+
+  @import 'structure/header';
+  @import 'structure/content';
+  @import 'structure/footer';
+}

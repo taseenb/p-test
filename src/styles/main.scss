@@ -1,15 +1,7 @@
-$bg: #FFF;
-
-html,
-body {
-  position: relative;
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  background-color: $bg;
-  height: 200%;
-}
+@import 'vars';
+@import 'mixins';
+@import 'normalize';
+@import 'structure';
+@import 'typography';
+@import 'list';
+@import 'detail';

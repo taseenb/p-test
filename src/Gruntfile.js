@@ -15,7 +15,7 @@ module.exports = function (grunt) {
         options: { livereload: true }
       },
       styles: {
-        files: ['styles/*'],
+        files: ['styles/**/*'],
         tasks: ['sass'],
         options: { livereload: true }
       }

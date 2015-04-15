@@ -1,4 +1,4 @@
-/*! p-test - code by @taseenb / v0.0.1 April 13, 2015 */
+/*! p-test - code by @taseenb / v0.0.1 April 15, 2015 */
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -3985,13 +3985,13 @@ define('text',['module'], function (module) {
 });
 
 
-define('text!tpl/header.html',[],function () { return '<div id="header">\n    <h1>\n        <a href="<%= link %>"><%= title %></a>\n    </h1>\n\n    Last modified: <span class="modified"><%= modified %></span>\n\n    <hr>\n</div>\n\n';});
+define('text!tpl/header.html',[],function () { return '<div id="header">\n    <h1>\n        <a href="#"><%= title %></a>\n    </h1>\n\n    Last modified: <span class="modified"><%= modified %></span>\n</div>\n\n';});
 
 
 define('text!tpl/content.html',[],function () { return '<div id="content">\n\n    <div id="detail"></div>\n    <div id="list"></div>\n\n</div>';});
 
 
-define('text!tpl/footer.html',[],function () { return '<div id="footer">\n    <hr>\n    Code by @taseenb - Content by Potato\n</div>\n';});
+define('text!tpl/footer.html',[],function () { return '<div id="footer">\n    Code by <a href="http://www.estebanalmiron.com/">@taseenb</a> - Content by <a href="https://p.ota.to/">Potato</a>\n</div>\n';});
 
 define('views/mainView',['require','underscore','backbone','text!tpl/header.html','text!tpl/content.html','text!tpl/footer.html'],function(require) {
 
@@ -4038,7 +4038,7 @@ define('views/mainView',['require','underscore','backbone','text!tpl/header.html
 
 });
 
-define('text!tpl/list.html',[],function () { return '<div id="list">\n\n    <% _.each(list, function(el, idx, list){ %>\n\n    <div class="item">\n        <a class="link-detail" href="#item/<%= idx %>"><img src="<%= el.media.m %>"></a>\n\n        <div class="details">\n            <a class="link-detail" href="#item/<%= idx %>"><%= el.title %></a>\n\n            <div class="metadata">\n                <a class="author" href="https://www.flickr.com/people/<%= el.author_id %>"><%= el.author %></a>\n                <span class="published">Published: <%= el.published %></span>\n                <a class="link-flickr" href="<%= el.link %>">View on Flickr</a>\n            </div>\n        </div>\n\n    </div>\n\n    <% }); %>\n\n</div>';});
+define('text!tpl/list.html',[],function () { return '<% _.each(list, function(el, idx, list){ %>\n\n<div class="clear"></div>\n\n<div class="item">\n    <a class="link-detail img" href="#item/<%= idx %>">\n        <span class="img-wrapper" style="background-image: url(<%= el.media.m %>);"></span>\n    </a>\n\n    <div class="details">\n        <a class="link-detail title" href="#item/<%= idx %>"><%= el.title %></a>\n\n        <div class="metadata">\n            <a class="author" href="https://www.flickr.com/people/<%= el.author_id %>"><%= el.author %></a>\n            <span class="published">Published: <%= el.published %></span>\n            <a class="link-flickr" href="<%= el.link %>">View on Flickr</a>\n        </div>\n    </div>\n\n</div>\n\n\n<% }); %>\n';});
 
 define('views/listView',['require','underscore','backbone','text!tpl/list.html'],function(require) {
 
@@ -4056,7 +4056,6 @@ define('views/listView',['require','underscore','backbone','text!tpl/list.html']
     initialize: function(data) {
       App.mediator.subscribe('scroll', this.onScroll.bind(this));
       App.mediator.subscribe('resize', this.onResize.bind(this));
-
       this.listData = data;
 
       return this;
@@ -4098,9 +4097,9 @@ define('views/listView',['require','underscore','backbone','text!tpl/list.html']
 
 });
 
-define('text!tpl/detail.html',[],function () { return '<div class="inner">\n\n    <div class="detail-header">\n        <h1><%= title %></h1>\n\n        <a class="back" href="#">Back</a>\n\n        <div class="subtitle">\n            <span class="author">\n                <a href="https://www.flickr.com/people/<%= author_id %>"><%= author %></a>\n            </span>\n\n            <span class="published">\n                Published: <span class="published"><%= published %></span>\n            </span>\n        </div>\n    </div>\n\n    <div class="detail-content">\n        <div class="image-wrapper">\n            <img src="<%= media.m %>">\n        </div>\n\n        <div class="description"><%= description %></div>\n    </div>\n\n    <div class="detail-footer">\n        <div class="tags">\n            Tags:\n            <% _.each(tags.split(\' \'), function(el, idx) { %>\n            <a href="#<%= el %>"><%= el %></a>\n            <% }); %>\n        </div>\n    </div>\n\n</div>';});
+define('text!tpl/detail.html',[],function () { return '<div class="inner">\n\n    <div class="header">\n        <h1 class="title"><a href="<%= link %>"><%= title %></a></h1>\n\n        <a class="back" href="#">\n            <span class="back-inner">Back</span>\n        </a>\n\n        <div class="subtitle">\n            <span class="author">\n                <a href="https://www.flickr.com/people/<%= author_id %>"><%= author %></a>\n            </span>\n\n            <span class="separator">|</span>\n\n            <span class="published">\n                Published: <span><%= published %></span>\n            </span>\n        </div>\n    </div>\n\n    <div class="content">\n        <div class="img">\n            <img src="<%= media.m %>">\n        </div>\n\n        <div class="description"><%= description %></div>\n    </div>\n\n    <div class="footer">\n        <div class="tags">\n            Tags:\n            <% _.each(tags.split(\' \'), function(el, idx) { %>\n            <a href="https://www.flickr.com/photos/tags/<%= el %>/"><%= el %></a>\n            <% }); %>\n        </div>\n    </div>\n\n</div>';});
 
-define('views/detailView',['require','underscore','backbone','text!tpl/detail.html'],function(require) {
+define('views/detailView',['require','underscore','backbone','text!tpl/detail.html'],function (require) {
 
   'use strict';
 
@@ -4113,37 +4112,42 @@ define('views/detailView',['require','underscore','backbone','text!tpl/detail.ht
 
     el: '#detail',
 
-    initialize: function() {
+    initialize: function () {
       App.mediator.subscribe('scroll', this.onScroll.bind(this));
       App.mediator.subscribe('resize', this.onResize.bind(this));
 
       return this;
     },
 
-    render: function(data) {
+    render: function (data) {
       var html = _.template(detailTpl)(data);
-      this.$el.html(html);
+      this.$el.hide().html(html);
 
-      return this;
-    },
+      // Clean description: only keep the 3rd p element
+      this.$('.description p:lt(2)').remove();
 
-    show: function() {
       this.$el.show();
 
       return this;
     },
 
-    hide: function() {
+    show: function () {
+      this.$el.show();
+
+      return this;
+    },
+
+    hide: function () {
       this.$el.hide();
 
       return this;
     },
 
-    onScroll: function(e) {
+    onScroll: function (e) {
 //      console.log(e);
     },
 
-    onResize: function(e) {
+    onResize: function (e) {
 //      console.log(e);
     }
 
@@ -4170,8 +4174,6 @@ define('router',['require','backbone','views/mainView','views/listView','views/d
     },
 
     initialize: function () {
-      console.log('router initialized');
-
       var mainView = new MainView();
       mainView.render();
     },
@@ -4588,6 +4590,53 @@ define('router',['require','backbone','views/mainView','views/listView','views/d
   return Mediator;
 }));
 
+define('helper',['require'],function (require) {
+
+  return {
+
+    getCleanAuthorName: function(flickrAuthor) {
+      var name = '';
+      name = flickrAuthor.replace(/^(nobody@flickr.com\ \()/, '');
+      name = name.slice(0, - 1);
+      return name;
+    },
+
+    /**
+     * Format a js date into English format and return a string.
+     * @param date Date object.
+     * @returns {string}
+     */
+    getFormattedDate: function (date) {
+
+      // Month names
+      var mthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      // 12-hour clock
+      var hours12 = '';
+      var ampm = '';
+      if (date.getHours() / 12 < 1) {
+        // am
+        hours12 = date.getHours();
+        ampm = 'am';
+      } else {
+        hours12 = date.getHours();
+        ampm = 'pm';
+      }
+
+      var day = date.getDay();
+      var month = mthNames[(date.getMonth() + 1)];
+      var year = date.getFullYear();
+      var minutes = date.getMinutes();
+
+      var formattedDate = day + ' ' + month + ' ' + year + ' at ' + hours12 + ':' + minutes + ampm;
+
+      return formattedDate;
+    }
+
+
+  };
+
+});
 define('resize',['require','underscore'],function(require){
 
   var _ = require('underscore');
@@ -4640,17 +4689,19 @@ define('scroll',['require','underscore'],function(require){
   return new Event();
 
 });
-define('app',['require','backbone','router','mediator-js','resize','scroll'],function (require) {
+define('app',['require','underscore','backbone','router','mediator-js','helper','resize','scroll'],function (require) {
 
   'use strict';
 
+  var _ = require('underscore');
   var Backbone = require('backbone');
   var Router = require('router');
   var Mediator = require('mediator-js');
 
-  var local = false;
-  var feed = local ? 'data/photos_public.json' : 'https://api.flickr.com/services/feeds/photos_public.gne?tags=potato&tagmode=all&format=json';
+  var helper = require('helper');
 
+  var local = true;
+  var feed = local ? 'data/photos_public.json' : 'https://api.flickr.com/services/feeds/photos_public.gne?tags=potato&tagmode=all&format=json';
 
   // Create App global
   window.App = window.App || {};
@@ -4660,15 +4711,25 @@ define('app',['require','backbone','router','mediator-js','resize','scroll'],fun
   require('resize');
   require('scroll');
 
-  // Get data and start router
+  // Get data, prepare data and start router
   $.ajax({
     url: feed,
-    dataType: local ? 'json' : 'jsonp',
-    jsonp: local ? undefined : 'jsoncallback',
+//    dataType: 'jsonp',
+//    jsonp: 'jsoncallback',
     success: function (data) {
+
       App.data = data;
 
-      console.log(data);
+      // Prepare data
+      _.each(App.data.items, function (el, idx) {
+
+        // Format all dates
+        var date = new Date(el.published);
+        el.published = helper.getFormattedDate(date); //'14th Apr 2015 at 12:45'
+
+        // Clean author names
+        el.author = helper.getCleanAuthorName(el.author);
+      });
 
       // Start router
       App.router = new Router();
@@ -4676,7 +4737,6 @@ define('app',['require','backbone','router','mediator-js','resize','scroll'],fun
     }
   });
 
-  console.log('start app!');
 
 });
 

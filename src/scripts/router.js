@@ -18,8 +18,6 @@ define(function (require) {
     },
 
     initialize: function () {
-      console.log('router initialized');
-
       var mainView = new MainView();
       mainView.render();
     },

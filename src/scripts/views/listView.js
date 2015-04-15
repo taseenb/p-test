@@ -14,7 +14,6 @@ define(function(require) {
     initialize: function(data) {
       App.mediator.subscribe('scroll', this.onScroll.bind(this));
       App.mediator.subscribe('resize', this.onResize.bind(this));
-
       this.listData = data;
 
       return this;

@@ -1,0 +1,23 @@
+body {
+  font-family: 'Ubuntu', Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: $baseFontSize;
+  color: $textColor;
+  font-weight: 300;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+a {
+  color: #0000fe;
+  text-decoration: none;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 20px;
+}
