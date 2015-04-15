@@ -4624,7 +4624,7 @@ define('helper',['require'],function (require) {
       }
 
       var day = date.getDay();
-      var month = mthNames[(date.getMonth() + 1)];
+      var month = mthNames[date.getMonth()];
       var year = date.getFullYear();
       var minutes = date.getMinutes();
 
