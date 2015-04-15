@@ -27,6 +27,8 @@
       float: left;
       width: 120px;
       min-height: 90px;
+      position:relative;
+      z-index: 2;
 
       .img-wrapper {
         display: block;
