@@ -493,7 +493,8 @@ a {
         white-space: normal; }
         #list .item .details .metadata .link-flickr, #list .item .details .metadata .published, #list .item .details .metadata .author {
           display: inline-block;
-          vertical-align: top; }
+          vertical-align: top;
+          margin-right: 20px; }
 
 #detail {
   height: 390px;
