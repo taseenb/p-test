@@ -23,19 +23,16 @@ define(function (require) {
   // Get data, prepare data and start router
   $.ajax({
     url: feed,
-//    dataType: 'jsonp',
-//    jsonp: 'jsoncallback',
+    dataType: local ? undefined : 'jsonp',
+    jsonp: local ? undefined : 'jsoncallback',
     success: function (data) {
-
       App.data = data;
 
       // Prepare data
       _.each(App.data.items, function (el, idx) {
-
         // Format all dates
         var date = new Date(el.published);
         el.published = helper.getFormattedDate(date); //'14th Apr 2015 at 12:45'
-
         // Clean author names
         el.author = helper.getCleanAuthorName(el.author);
       });
