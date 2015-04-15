@@ -521,9 +521,8 @@ a {
         font-size: 13px; }
         #detail .inner .header .back .back-inner {
           text-align: center;
-          height: 24px;
+          line-height: 29px;
           width: 76px;
-          padding-top: 5px;
           display: inline-block;
           background-image: url('../img/back-bg.png');
           background-repeat: no-repeat;

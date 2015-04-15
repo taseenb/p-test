@@ -9,7 +9,7 @@ define(function (require) {
 
   var helper = require('helper');
 
-  var local = true;
+  var local = false;
   var feed = local ? 'data/photos_public.json' : 'https://api.flickr.com/services/feeds/photos_public.gne?tags=potato&tagmode=all&format=json';
 
   // Create App global
